@@ -32,7 +32,7 @@ class LinkedList:
     def clear(self): #метод очистки всего содержимого
         self.__init__()
 
-    def delete(self, val): #метод удаления одного узла по его значению
+    def delete(self, val, deleteAll=False): #метод удаления одного узла по его значению
         node = self.head
         pred = None
         while node != None:
@@ -43,22 +43,8 @@ class LinkedList:
                     self.head = node.next
                 else:
                     pred.next = node.next
-                return
-            else:
-                pred = node
-            node = node.next
-
-    def deleteAll(self, val): #метод удаления всех узлов по конкретному значению
-        node = self.head
-        pred = None
-        while node != None:
-            if node.value == val:
-                if self.tail.value == val:
-                    self.tail = pred
-                if pred == None:
-                    self.head = node.next
-                else:
-                    pred.next = node.next
+                if deleteAll==False:
+                    return
             else:
                 pred = node
             node = node.next
