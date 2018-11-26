@@ -1,7 +1,7 @@
 class Node:
-    def __init__(self, v):
+    def __init__(self, v = None, n = None):
         self.value = v
-        self.next = None
+        self.next = n
 
 class LinkedList:
     def __init__(self):
@@ -72,19 +72,14 @@ class LinkedList:
         if self.head == None:
             self.tail = self.head = Node(x) # проверка на пустой список
             return
-        if i == 0: #если позиция 0
-            self.head = Node(x, self.head)
-            return
         node = self.head
-        s=0
-        while s!=None:
-            s+=1
-            if s == i:
+        while True:
+            if node.value == i:
                 node.next = Node(x, node.next)
                 if node.next.next == None:
                     self.tail = node.next
                 break
-            node = node.next
+            else: node = node.next
 
     def func(s, d): #функция, которая получает на вход два связанных списка, состоящие из целых значений, и если их длины равны, возвращает список, каждый элемент которого равен сумме соответствующих элементов входных списков
         if s.size()==d.size():
