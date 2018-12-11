@@ -29,27 +29,7 @@ class LinkedList:
             node = node.next
         return None
 
-    def clear(self): #метод очистки всего содержимого
-        self.__init__()
-
-    def delete(self, val, deleteAll=False): #метод удаления одного узла по его значению
-        node = self.head
-        pred = None
-        while node != None:
-            if node.value == val:
-                if self.tail.value == val:
-                    self.tail = pred
-                if pred == None:
-                    self.head = node.next
-                else:
-                    pred.next = node.next
-                if deleteAll==False:
-                    return
-            else:
-                pred = node
-            node = node.next
-
-    def findAll(self, val): #метод поиска всех узлов по конкретному значению
+    def find_all(self, val): #метод поиска всех узлов по конкретному значению
         node = self.head
         i = 0
         s = dict()
@@ -60,7 +40,27 @@ class LinkedList:
             i += 1
         return s
 
-    def size(self): #метод вычисления длины списка
+    def delete(self, val, all=False): #метод удаления одного узла по его значению
+        node = self.head
+        pred = None
+        while node != None:
+            if node.value == val:
+                if self.tail.value == val:
+                    self.tail = pred
+                if pred == None:
+                    self.head = node.next
+                else:
+                    pred.next = node.next
+                if all==False:
+                    return
+            else:
+                pred = node
+            node = node.next
+
+    def clean(self): #метод очистки всего содержимого
+        self.__init__()
+
+    def len(self): #метод вычисления длины списка
         node = self.head
         s = 0
         while node != None:
@@ -68,21 +68,21 @@ class LinkedList:
             node = node.next
         return s
 
-    def insert(self, i, x): #метод вставки узла после заданного узла
+    def insert(self, afterNode, newNode): #метод вставки узла после заданного узла
         if self.head == None:
-            self.tail = self.head = Node(x) # проверка на пустой список
+            self.tail = self.head = Node(newNode) # проверка на пустой список
             return
         node = self.head
         while True:
-            if node.value == i:
-                node.next = Node(x, node.next)
+            if node.value == afterNode:
+                node.next = Node(newNode, node.next)
                 if node.next.next == None:
                     self.tail = node.next
                 break
             else: node = node.next
 
     def func(s, d): #функция, которая получает на вход два связанных списка, состоящие из целых значений, и если их длины равны, возвращает список, каждый элемент которого равен сумме соответствующих элементов входных списков
-        if s.size()==d.size():
+        if s.len()==d.len():
             node1=s.head
             node2=d.head
             s=[]
