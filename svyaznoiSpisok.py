@@ -35,7 +35,7 @@ class LinkedList:
         s = []
         while node is not None:
             if node.value == val:
-                s.append(node.value)
+                s.append(node)
             node = node.next
             i += 1
         return s
