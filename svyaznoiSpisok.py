@@ -32,10 +32,10 @@ class LinkedList:
     def find_all(self, val): #метод поиска всех узлов по конкретному значению
         node = self.head
         i = 0
-        s = dict()
+        s = []
         while node is not None:
             if node.value == val:
-                s[i] = node.value
+                s.append(node.value)
             node = node.next
             i += 1
         return s
