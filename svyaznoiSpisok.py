@@ -42,20 +42,16 @@ class LinkedList:
 
     def delete(self, val, all=False): #метод удаления одного узла по его значению
         node = self.head
-        pred = None
+        old = self.head
         while node != None:
             if node.value == val:
-                if self.tail.value == val:
-                    self.tail = pred
-                if pred == None:
-                    self.head = node.next
-                else:
-                    pred.next = node.next
+                old.next = node.next
                 if all==False:
                     return
             else:
-                pred = node
+                old = node
             node = node.next
+        self.tail=old
 
     def clean(self): #метод очистки всего содержимого
         self.__init__()
