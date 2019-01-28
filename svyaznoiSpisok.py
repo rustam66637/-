@@ -45,13 +45,14 @@ class LinkedList:
         old = self.head
         while node != None:
             if node.value == val:
+                if node==self.head:
+                    self.head=node.next
                 old.next = node.next
                 if all==False:
                     return
             else:
                 old = node
             node = node.next
-        self.tail=old
 
     def clean(self): #метод очистки всего содержимого
         self.__init__()
@@ -87,3 +88,12 @@ class LinkedList:
                 node1=node1.next
                 node2=node2.next
             return s
+
+s_list = LinkedList()
+s_list.add_in_tail(Node(15))
+s_list.add_in_tail(Node(10))
+s_list.add_in_tail(Node(10))
+s_list.add_in_tail(Node(15))
+s_list.add_in_tail(Node(10))
+s_list.delete(10,True)
+s_list.print_all_nodes()
