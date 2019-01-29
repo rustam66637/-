@@ -47,6 +47,8 @@ class LinkedList:
             if node.value == val:
                 if node==self.head:
                     self.head=node.next
+                if node==self.tail:
+                    self.tail=old
                 old.next = node.next
                 if all==False:
                     return
