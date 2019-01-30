@@ -45,15 +45,14 @@ class LinkedList:
         old = self.head
         while node != None:
             if node.value == val:
+                if node==self.head and node==self.tail and node.value==val:
+                    self.head=self.tail=None
                 if node==self.head:
                     self.head=node.next
                 if node==self.tail:
                     self.tail=old
                 old.next = node.next
                 if all==False:
-                    if node.next==None:
-                        if self.tail.value==val:
-                            self.tail=self.head
                     return
             else:
                 old = node
@@ -93,12 +92,3 @@ class LinkedList:
                 node1=node1.next
                 node2=node2.next
             return s
-
-s_list = LinkedList()
-s_list.add_in_tail(Node(15))
-s_list.add_in_tail(Node(10))
-s_list.add_in_tail(Node(10))
-s_list.add_in_tail(Node(15))
-s_list.add_in_tail(Node(10))
-s_list.delete(10,True)
-s_list.print_all_nodes()
