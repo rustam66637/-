@@ -45,14 +45,14 @@ class LinkedList:
         old = self.head
         while node != None:
             if node.value == val:
-                if node==self.head and node==self.tail and node.value==val:
-                    self.head=self.tail=None
-                if node==self.head:
-                    self.head=node.next
-                if node==self.tail:
-                    self.tail=old
+                if node == self.head and node == self.tail and node.value == val:
+                    self.head = self.tail = None
+                if node == self.head:
+                    self.head = node.next
+                if node == self.tail:
+                    self.tail = old
                 old.next = node.next
-                if all==False:
+                if all == False:
                     return
             else:
                 old = node
@@ -71,7 +71,7 @@ class LinkedList:
 
     def insert(self, afterNode, newNode): #метод вставки узла после заданного узла
         if afterNode == None and self.head == None and self.tail == None:
-            self.head = self.tail = Node(newNode) # проверка на пустой список
+            LinkedList.add_in_tail(self, newNode) # проверка на пустой список
             return
         node = self.head
         while True:
@@ -83,12 +83,12 @@ class LinkedList:
             else: node = node.next
 
     def func(s, d): #функция, которая получает на вход два связанных списка, состоящие из целых значений, и если их длины равны, возвращает список, каждый элемент которого равен сумме соответствующих элементов входных списков
-        if s.len()==d.len():
-            node1=s.head
-            node2=d.head
-            s=[]
-            while node1!=None:
-                s.append(node1.value+node2.value)
-                node1=node1.next
-                node2=node2.next
+        if s.len() == d.len():
+            node1 = s.head
+            node2 = d.head
+            s = []
+            while node1 != None:
+                s.append(node1.value + node2.value)
+                node1 = node1.next
+                node2 = node2.next
             return s
