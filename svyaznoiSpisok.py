@@ -70,8 +70,8 @@ class LinkedList:
         return s
 
     def insert(self, afterNode, newNode): #метод вставки узла после заданного узла
-        if self.head == None:
-            self.tail = self.head = Node(newNode) # проверка на пустой список
+        if afterNode == None and self.head == None and self.tail == None:
+            self.head = self.tail = Node(newNode) # проверка на пустой список
             return
         node = self.head
         while True:
