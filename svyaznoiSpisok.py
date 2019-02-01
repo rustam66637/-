@@ -71,18 +71,25 @@ class LinkedList:
 
     def insert(self, afterNode, newNode): #метод вставки узла после заданного узла
         if afterNode == None and self.head == None and self.tail == None:
-            if type(newNode)==Node:
+            if type(newNode) == Node:
                 LinkedList.add_in_tail(self, newNode) # проверка на пустой список
-            if type(newNode)==int:
+            if type(newNode) == int:
                 self.tail = self.head = Node(newNode)
             return
         node = self.head
         while True:
-            if type(newNode)==Node:
+            if type(newNode) == Node:
                 LinkedList.add_in_tail(self, newNode)
                 return
-            if type(newNode)==int:
+            if type(newNode) == int and type(afterNode) == Node:
                 if node.value == afterNode.value:
+                    node.next = Node(newNode, node.next)
+                    if node.next.next == None:
+                        self.tail = node.next
+                    break
+                else: node = node.next
+            if type(newNode) == int and type(afterNode) == int:
+                if node.value == afterNode:
                     node.next = Node(newNode, node.next)
                     if node.next.next == None:
                         self.tail = node.next
